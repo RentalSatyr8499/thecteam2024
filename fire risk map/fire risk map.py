@@ -1,6 +1,7 @@
 import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 
 # fxn to get color of each county
@@ -47,11 +48,16 @@ for county, value in fire_risk_by_county.items():
         color = get_color(value, vmin=min(fire_risk_by_county.values()), vmax=max(fire_risk_by_county.values()))
         california_gdf[california_gdf['NAME'] == county].plot(ax=ax, color=color, edgecolor='black', linewidth=1)
 
+# Add a colorbar
+cax = make_axes_locatable(ax).append_axes("right", size="5%", pad=0.05)
+mappable = plt.cm.ScalarMappable(cmap='YlOrRd', norm=plt.Normalize(vmin=min(fire_risk_by_county.values()), vmax=max(fire_risk_by_county.values())))
+plt.colorbar(mappable, cax)
+
 # Customize the plot (add title, labels, etc.)
 plt.title('California Counties with Fire Risk Highlighted')
 plt.xlabel('Longitude')
 plt.ylabel('Latitude')
-plt.grid(True)
+plt.grid(False)
 
 # Show the plot
 plt.show()
