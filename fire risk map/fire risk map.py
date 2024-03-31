@@ -53,11 +53,10 @@ cax = make_axes_locatable(ax).append_axes("right", size="5%", pad=0.05)
 mappable = plt.cm.ScalarMappable(cmap='YlOrRd', norm=plt.Normalize(vmin=min(fire_risk_by_county.values()), vmax=max(fire_risk_by_county.values())))
 plt.colorbar(mappable, cax)
 
-# Customize the plot (add title, labels, etc.)
-plt.title('California Counties with Fire Risk Highlighted')
-plt.xlabel('Longitude')
-plt.ylabel('Latitude')
-plt.grid(False)
+# plt.title('California Counties with Fire Risk Highlighted')
+# plt.xlabel('Longitude')
+# plt.ylabel('Latitude')
+# plt.grid(False)
 
 # Show the plot
 plt.show()
