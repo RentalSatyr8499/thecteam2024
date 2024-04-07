@@ -2,7 +2,6 @@ import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import make_axes_locatable
-from matplotlib.animation import FuncAnimation
 
 # fxn to get color of each county
 def get_color(value, vmin, vmax):
@@ -55,15 +54,15 @@ for i in years:
 fig, ax = plt.subplots(figsize=(10, 10))
 california_gdf.plot(ax=ax, edgecolor='black', linewidth=0.5)
 
-color_counties(fireRiskByCounty[4])
+
+color_counties(fireRiskByCounty[8])
+plt.title(2030)
 
 # Add a colorbar
 cax = make_axes_locatable(ax).append_axes("right", size="5%", pad=0.05)
 mappable = plt.cm.ScalarMappable(cmap='YlOrRd', norm=plt.Normalize(vmin=min(fireRiskByCounty[2].values()), vmax=max(fireRiskByCounty[2].values())))
 plt.colorbar(mappable, cax)
 
-plt.title('2024')
-
-# # Show the animation
+# Show the animation
+plt.savefig(r'C:\Users\ychun\Documents\workspace\2030.png')
 plt.show()
-plt.savefig(r'C:\Users\ychun\Documents\workspace\2022.png')
